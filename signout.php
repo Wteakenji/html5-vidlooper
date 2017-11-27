@@ -7,6 +7,6 @@
 		session_destroy();
 		
 	}
-	header("Location: https://test.exact-lab.com/webrtc/user.php");
+	header("Location: user.php");
 
 ?>

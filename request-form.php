@@ -6,16 +6,16 @@
 
 if(isset($_POST['submit'])){ //check if form was submitted
   
-    $phrase = mysql_real_escape_string($_POST['phrase']);
-    $translit = mysql_real_escape_string($_POST['translit']);
-    $translat = mysql_real_escape_string($_POST['translat']);
+    $phrase = mysqli_real_escape_string($_POST['phrase']);
+    $translit = mysqli_real_escape_string($_POST['translit']);
+    $translat = mysqli_real_escape_string($_POST['translat']);
 
     if($phrase != NULL && $phrase != ""){
 
-      $getuser = mysql_query("SELECT * FROM tbl_user WHERE user_username='".$_SESSION['username']."'");
-      $userrow = mysql_fetch_array($getuser);
+      $getuser = mysqli_query("SELECT * FROM tbl_user WHERE user_username='".$_SESSION['username']."'");
+      $userrow = mysqli_fetch_array($getuser);
 
-      $result = mysql_query("INSERT INTO tbl_topic(topic_phrase, topic_transliteration, topic_translation, topic_status, topic_author) VALUES('".$phrase."', '".$translit."', '".$translat."', 0, ".$userrow[0].")");
+      $result = mysqli_query("INSERT INTO tbl_topic(topic_phrase, topic_transliteration, topic_translation, topic_status, topic_author) VALUES('".$phrase."', '".$translit."', '".$translat."', 0, ".$userrow[0].")");
 
       header("Location: index.php");
       //$userrow = mysql_fetch_array($result);

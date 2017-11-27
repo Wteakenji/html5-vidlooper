@@ -86,14 +86,14 @@ function selfInvoker()
 
 
     $rectype = 1;
-    $query = mysql_query("SELECT record_id, record_topic, record_file, record_date, record_user FROM tbl_recording WHERE record_type=1 AND record_topic=".$vid);
-    $number_of_rows = mysql_num_rows($query); 
+    $query = mysqli_query($link, "SELECT record_id, record_topic, record_file, record_date, record_user FROM tbl_recording WHERE record_type=1 AND record_topic=".$vid);
+    $number_of_rows = mysqli_num_rows($query); 
     if($number_of_rows >= 4){
         $rectype = 2;
     }
 
     //
-    $result = mysql_query("INSERT INTO tbl_recording (record_topic, record_file, record_user, record_type, record_thumb) VALUES (".$vid.", '".$fileName."', '".$user."', ".$rectype.", '".$thumb."')");
+    $result = mysqli_query($link, "INSERT INTO tbl_recording (record_topic, record_file, record_user, record_type, record_thumb) VALUES (".$vid.", '".$fileName."', '".$user."', ".$rectype.", '".$thumb."')");
 
     echo ($filePath);
 }

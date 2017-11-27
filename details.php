@@ -3,10 +3,10 @@
   include_once('session.php');
   include_once('db.php');
 
-  $vid = mysql_real_escape_string($_GET['vid']);
+  $vid = mysqli_real_escape_string($_GET['vid']);
 
   if(isset($_GET['rid'])){
-    $rid = mysql_real_escape_string($_GET['rid']);
+    $rid = mysqli_real_escape_string($_GET['rid']);
   }else{
     $rid = NULL;
   }
@@ -49,8 +49,8 @@
         <div align="right"><a href="index.php">Home</a> | username: <?php echo $_SESSION['username']; ?>, <a href="signout.php">signout</a></div>
 
       <?php
-        $result = mysql_query("SELECT * FROM tbl_topic WHERE topic_id=".$vid);
-        $row = mysql_fetch_array($result);
+        $result = mysqli_query($link, "SELECT * FROM tbl_topic WHERE topic_id=".$vid);
+        $row = mysqli_fetch_array($result);
       ?>
       <div style="text-align: center; margin-top: 100px;">
         <h1> <span><?php echo $row[1]; ?></span> <a href="request-edit.php?vid=<?php echo $vid; ?>">edit</a></h1> 
@@ -67,7 +67,7 @@
   <!--<script src="js/main.js"></script>-->
   <script type="text/javascript">
 
-      setTimeout(function(){ window.location = "https://test.exact-lab.com/webrtc/video.php?vid="+<?php echo $vid; ?>; }, 3000);
+      setTimeout(function(){ window.location = "https://54.174.118.236/webrtc/video.php?vid="+<?php echo $vid; ?>; }, 3000);
       
       
 

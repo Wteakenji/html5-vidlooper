@@ -4,21 +4,21 @@
   include_once('db.php');
 
 
-$vid = mysql_real_escape_string($_GET['vid']);
+$vid = mysqli_real_escape_string($_GET['vid']);
 
 
-$result = mysql_query("SELECT * FROM tbl_topic WHERE topic_id=".$vid);
-$row = mysql_fetch_array($result);
+$result = mysqli_query($link, "SELECT * FROM tbl_topic WHERE topic_id=".$vid);
+$row = mysqli_fetch_array($result);
 
 if(isset($_POST['submit'])){ //check if form was submitted
   
-    $translit = mysql_real_escape_string($_POST['translit']);
-    $translat = mysql_real_escape_string($_POST['translat']);
+    $translit = mysqli_real_escape_string($_POST['translit']);
+    $translat = mysqli_real_escape_string($_POST['translat']);
 
     if($vid != NULL){
 
       //$result = mysql_query("UPDATE tbl_topic SET topic_transliteration='".$translit."' WHERE topic_id=".$vid.")");
-      $sql = mysql_query('UPDATE tbl_topic
+      $sql = mysqli_query($link, 'UPDATE tbl_topic
       SET topic_transliteration="'.$translit.'", topic_translation="'.$translat.'"
       WHERE topic_id='.$vid);
 

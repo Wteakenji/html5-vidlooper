@@ -3,10 +3,10 @@
   include_once('session.php');
   include_once('db.php');
 
-  $vid = mysql_real_escape_string($_GET['vid']);
+  $vid = mysqli_real_escape_string($_GET['vid']);
 
   if(isset($_GET['rid'])){
-    $rid = mysql_real_escape_string($_GET['rid']);
+    $rid = mysqli_real_escape_string($_GET['rid']);
   }else{
     $rid = NULL;
   }
@@ -48,17 +48,17 @@
     
 
     <?php 
-       $result = mysql_query("SELECT record_id, record_topic, record_file, record_date, record_user FROM tbl_recording WHERE record_type=1 AND record_topic=".$vid);
-       $number_of_rows = mysql_num_rows($result);  
+       $result = mysqli_query($link, "SELECT record_id, record_topic, record_file, record_date, record_user FROM tbl_recording WHERE record_type=1 AND record_topic=".$vid);
+       $number_of_rows = mysqli_num_rows($result);  
 
        if($number_of_rows > 0 && $rid != 'rec'){ //$rid != NULL
 
         if($rid != NULL){
-          $mvid = mysql_query("SELECT record_id, record_topic, record_file, record_date, record_user FROM tbl_recording WHERE record_id=".$rid);
-          $vidrow = mysql_fetch_array($mvid);
+          $mvid = mysqli_query($link, "SELECT record_id, record_topic, record_file, record_date, record_user FROM tbl_recording WHERE record_id=".$rid);
+          $vidrow = mysqli_fetch_array($mvid);
         }else{
-          $mvid = mysql_query("SELECT record_id, record_topic, record_file, record_date, record_user FROM tbl_recording WHERE record_topic=".$vid);
-          $vidrow = mysql_fetch_array($mvid);
+          $mvid = mysqli_query($link, "SELECT record_id, record_topic, record_file, record_date, record_user FROM tbl_recording WHERE record_topic=".$vid);
+          $vidrow = mysqli_fetch_array($mvid);
           header("Location: https://test.exact-lab.com/webrtc/video.php?vid=".$vid."&rid=".$vidrow{'record_id'});
         }
         
@@ -111,25 +111,25 @@
             <?php 
 
              
-              $userresult = mysql_query("SELECT record_id, record_topic, record_file, record_date, record_user FROM tbl_recording WHERE record_type=2 AND record_topic=".$vid." AND record_user='".$_SESSION['username']."'");
+              $userresult = mysqli_query($link, "SELECT record_id, record_topic, record_file, record_date, record_user FROM tbl_recording WHERE record_type=2 AND record_topic=".$vid." AND record_user='".$_SESSION['username']."'");
               //echo $number_of_rows;
 
               if($number_of_rows > 0){
                 $i = 1;
-                while ($row = mysql_fetch_array($result)) {
+                while ($row = mysqli_fetch_array($result)) {
 
-                  $getthumb = mysql_query("SELECT * FROM tbl_recording WHERE record_topic=".$row{'record_topic'});
-                  $rowthumb = mysql_fetch_array($getthumb);
+                  $getthumb = mysqli_query($link, "SELECT * FROM tbl_recording WHERE record_topic=".$row{'record_topic'});
+                  $rowthumb = mysqli_fetch_array($getthumb);
 
                   echo "<div class='viditem'><a href='video.php?vid=".$row{'record_topic'}."&rid=".$row{'record_id'}."' title='".$row{'record_id'}."'><img src='uploads/".$row{'record_topic'}."/".$rowthumb[1]."' /><br/>Video #".$i." by ".$row{'record_user'}."</a></div>";
                    //echo "ID:".$row{'record_id'}." File:".$row{'record_file'}."Date: ". $row{'record_date'}."<br>";
                   $i++;
                 }
 
-                while ($row = mysql_fetch_array($userresult)) {
+                while ($row = mysqli_fetch_array($userresult)) {
                   
-                  $getthumb = mysql_query("SELECT * FROM tbl_recording WHERE record_topic=".$row{'record_topic'});
-                  $rowthumb = mysql_fetch_array($getthumb);
+                  $getthumb = mysqli_query($link, "SELECT * FROM tbl_recording WHERE record_topic=".$row{'record_topic'});
+                  $rowthumb = mysqli_fetch_array($getthumb);
 
                   echo "<div class='viditem'><a href='video.php?vid=".$row{'record_topic'}."&rid=".$row{'record_id'}."' title='".$row{'record_id'}."'><img src='uploads/".$row{'record_topic'}."/".$rowthumb[1]."' /><br/>Video #".$i." by ".$row{'record_user'}."</a></div>";
                    //echo "ID:".$row{'record_id'}." File:".$row{'record_file'}."Date: ". $row{'record_date'}."<br>";

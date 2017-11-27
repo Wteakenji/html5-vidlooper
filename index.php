@@ -54,13 +54,13 @@
 
             /* Get total number of records */
            $sql = "SELECT count(topic_id) FROM tbl_topic ";
-           $retval = mysql_query( $sql);
+           $retval = mysqli_query($link,  $sql);
            
            if(! $retval ) {
               die('Could not get data: ' . mysql_error());
            }
 
-           $row = mysql_fetch_array($retval, MYSQL_NUM );
+           $row = mysqli_fetch_array($retval, MYSQL_NUM );
            $rec_count = $row[0];
 
 
@@ -77,7 +77,7 @@
            $left_rec = $rec_count - ($page * $rec_limit);
            $sql = "SELECT * FROM tbl_topic WHERE topic_status=1 LIMIT $offset, $rec_limit";
               
-           $retval = mysql_query( $sql );
+           $retval = mysqli_query($link,  $sql );
            
            if(! $retval ) {
               die('Could not get data: ' . mysql_error());
@@ -87,11 +87,11 @@
              //$result = mysql_query("SELECT * FROM tbl_topic WHERE topic_status=1");
              
 
-            while ($row = mysql_fetch_array($retval)) {
+            while ($row = mysqli_fetch_array($retval)) {
 
 
-                $getthumb = mysql_query("SELECT * FROM tbl_recording WHERE record_topic=".$row[0]);
-                $rowthumb = mysql_fetch_array($getthumb);
+                $getthumb = mysqli_query($link, "SELECT * FROM tbl_recording WHERE record_topic=".$row[0]);
+                $rowthumb = mysqli_fetch_array($getthumb);
                 //echo $rowthumb[1];
                 echo "<div class='col-lg-3'><a href='details.php?vid=".$row[0]."'><img src='uploads/".$row[0]."/".$rowthumb[1]."' /><br/>".$row[1]."</a></div>";
             }
@@ -126,10 +126,10 @@
         <div><a class="mybtn" href="request-form.php">Request New Phrase</a></div>
         <hr>
         <?php 
-             $result = mysql_query("SELECT * FROM tbl_topic WHERE topic_status=0");
+             $result = mysqli_query($link, "SELECT * FROM tbl_topic WHERE topic_status=0");
              
 
-            while ($row = mysql_fetch_array($result)) {
+            while ($row = mysqli_fetch_array($result)) {
 
                 echo "<div><a href='details.php?vid=".$row[0]."'>".$row[1]."</a></div>";
             }
