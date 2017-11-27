@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){ //check if form was submitted
     $username = clean($_POST['username']);
     $password = md5(clean($_POST['password']));
 
-    $result = mysqli_query("SELECT * FROM tbl_user WHERE user_username='".$username."'");
+    $result = mysqli_query($link, "SELECT * FROM tbl_user WHERE user_username='".$username."'");
     $userrow = mysql_fetch_array($result);
 
     //var_dump($userrow[2]);
