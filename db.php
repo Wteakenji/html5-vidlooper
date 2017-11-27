@@ -6,7 +6,7 @@ if (!$link) {
 //echo 'Connected successfully';
 
 
-$webrtc = mysqli_select_db("webrtc",$link) or die("Could not select webrtc");
+$webrtc = mysqli_select_db($link, "webrtc") or die("Could not select webrtc");
 
 
 
