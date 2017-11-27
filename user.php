@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){ //check if form was submitted
       session_start();
       $_SESSION['username'] = $username;
       //$_SESSION['password'] = clean($_POST['password']);
-      header("Location: https://test.exact-lab.com/webrtc/index.php");
+      header("Location: index.php");
     }
     //var_dump($userrow);
    
