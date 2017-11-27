@@ -1,5 +1,5 @@
 <?php
-$link = mysql_connect('localhost', 'root', 'LastRoofAmokRoll');
+$link = mysqli_connect('localhost', 'root', 'LastRoofAmokRoll');
 if (!$link) {
     die('Could not connect: ' . mysql_error());
 }
