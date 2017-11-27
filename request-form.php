@@ -6,9 +6,9 @@
 
 if(isset($_POST['submit'])){ //check if form was submitted
   
-    $phrase = mysqli_real_escape_string($_POST['phrase']);
-    $translit = mysqli_real_escape_string($_POST['translit']);
-    $translat = mysqli_real_escape_string($_POST['translat']);
+    $phrase = mysqli_real_escape_string($link, $_POST['phrase']);
+    $translit = mysqli_real_escape_string($link, $_POST['translit']);
+    $translat = mysqli_real_escape_string($link, $_POST['translat']);
 
     if($phrase != NULL && $phrase != ""){
 

@@ -3,10 +3,10 @@
   include_once('session.php');
   include_once('db.php');
 
-  $vid = mysqli_real_escape_string($_GET['vid']);
+  $vid = mysqli_real_escape_string($link, $_GET['vid']);
 
   if(isset($_GET['rid'])){
-    $rid = mysqli_real_escape_string($_GET['rid']);
+    $rid = mysqli_real_escape_string($link, $_GET['rid']);
   }else{
     $rid = NULL;
   }

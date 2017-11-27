@@ -4,7 +4,7 @@
   include_once('db.php');
 
 
-$vid = mysqli_real_escape_string($_GET['vid']);
+$vid = mysqli_real_escape_string($link, $_GET['vid']);
 
 
 $result = mysqli_query($link, "SELECT * FROM tbl_topic WHERE topic_id=".$vid);
@@ -12,8 +12,8 @@ $row = mysqli_fetch_array($result);
 
 if(isset($_POST['submit'])){ //check if form was submitted
   
-    $translit = mysqli_real_escape_string($_POST['translit']);
-    $translat = mysqli_real_escape_string($_POST['translat']);
+    $translit = mysqli_real_escape_string($link, $_POST['translit']);
+    $translat = mysqli_real_escape_string($link, $_POST['translat']);
 
     if($vid != NULL){
 
