@@ -1,4 +1,41 @@
+<?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
+//var_dump($_POST);
+//var_dump('SESSION'.$_SESSION['username']);
+include_once('db.php');
+if(isset($_POST['submit'])){ //check if form was submitted
+  if (!isset($_SESSION) || !isset($_SESSION['username']) ) {
+    $username = clean($_POST['username']);
+    $password = md5(clean($_POST['password']));
+
+    $result = mysql_query("SELECT * FROM tbl_user WHERE user_username='".$username."'");
+    $userrow = mysql_fetch_array($result);
+
+    //var_dump($userrow[2]);
+    if($password == $userrow[2]){
+      session_start();
+      $_SESSION['username'] = $username;
+      //$_SESSION['password'] = clean($_POST['password']);
+      header("Location: index.php");
+    }
+    //var_dump($userrow);
+   
+    //var_dump('POST: '.$_POST['username']);
+  }
+  //$input = $_POST['username']; //get input text
+}
+
+function clean($string) {
+   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+   $preg = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+
+   return substr($preg, 0, 12);
+}
+
+?>
 <!DOCTYPE html>
 <!--
  *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
