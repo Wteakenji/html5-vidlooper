@@ -2,7 +2,7 @@
 // via: https://github.com/muaz-khan/RecordRTC/blob/master/RecordRTC-to-PHP/save.php
 header("Access-Control-Allow-Origin: *");
 
-include_once('db.php');
+
 
 function selfInvoker()
 {
@@ -85,6 +85,8 @@ function selfInvoker()
 
 
 
+    include_once('db.php');
+    
     $rectype = 1;
     $query = mysqli_query($link, "SELECT record_id, record_topic, record_file, record_date, record_user FROM tbl_recording WHERE record_type=1 AND record_topic=".$vid);
     $number_of_rows = mysqli_num_rows($query); 
