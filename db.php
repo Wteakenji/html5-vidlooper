@@ -1,5 +1,6 @@
 <?php
-$link = mysqli_connect('localhost', 'root', 'LastRoofAmokRoll');
+//$link = mysqli_connect('localhost', 'root', 'LastRoofAmokRoll');
+$link = mysqli_connect('feedordb.cj1g62ybkrgp.us-east-1.rds.amazonaws.com', 'makina009', 'OolaPumpInchWaza');
 if (!$link) {
     die('Could not connect: ' . mysql_error());
 }

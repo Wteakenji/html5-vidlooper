@@ -44,12 +44,12 @@ ini_set('display_errors', '1');
 
 </head>
 
-<body style="padding: 0 !important;">
+<body style="padding: 0 !important; background-color: #000;">
 
   
 
 
-  <div style="padding:20px;">
+  <div style="padding:20px; color: #fff;">
         <div align="right"><a href="index.php">Home</a> | username: <?php echo $_SESSION['username']; ?>, <a href="signout.php">signout</a></div>
 
       <?php
@@ -71,8 +71,8 @@ ini_set('display_errors', '1');
   <!--<script src="js/main.js"></script>-->
   <script type="text/javascript">
 
-      setTimeout(function(){ window.location = "https://54.174.118.236/webrtc/video.php?vid="+<?php echo $vid; ?>; }, 3000);
-      
+      setTimeout(function(){ window.location = "https://www.lingocircus.com/webrtc/video.php?vid="+<?php echo $vid; ?>; }, 3000);
+      //54.174.118.236
       
 
   </script>
