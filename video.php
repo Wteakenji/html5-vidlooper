@@ -66,7 +66,7 @@ ini_set('display_errors', '1');
         }else{
           $mvid = mysqli_query($link, "SELECT record_id, record_topic, record_file, record_date, record_user FROM tbl_recording WHERE record_topic=".$vid);
           $vidrow = mysqli_fetch_array($mvid);
-          header("Location: https://www.lingocircus.com/webrtc/video.php?vid=".$vid."&rid=".$vidrow{'record_id'});
+          header("Location: https://www.lingocircus.com/video.php?vid=".$vid."&rid=".$vidrow{'record_id'});
         }
         
           
@@ -362,8 +362,8 @@ function uploadToPHPServer(blob) {
 
     document.getElementById("loadinggif").style.display = "block";
 
-    makeXMLHttpRequest('https://www.lingocircus.com/webrtc/save.php', formData, function() {
-        var downloadURL = 'https://www.lingocircus.com/webrtc/uploads/' + file.name;
+    makeXMLHttpRequest('https://www.lingocircus.com/save.php', formData, function() {
+        var downloadURL = 'https://www.lingocircus.com/uploads/' + file.name;
         console.log('File uploaded to this path:', downloadURL);
         //document.getElementById("play").style.display = "block";
         document.getElementById("recorded").style.display = "block";
@@ -420,11 +420,11 @@ function loopEl(){
     if(c[0].title == curid){
       if(limreach == 1){
         console.log('inside limreach');
-        window.location = "https://www.lingocircus.com/webrtc/video.php?vid="+<?php echo $vid; ?>+"&rid=rec";
+        window.location = "https://www.lingocircus.com/video.php?vid="+<?php echo $vid; ?>+"&rid=rec";
       }else{
         console.log('next page');
         var cnext = viditems[i+1].childNodes;
-        window.location = "https://www.lingocircus.com/webrtc/video.php?vid="+<?php echo $vid; ?>+"&rid="+cnext[0].title;
+        window.location = "https://www.lingocircus.com/video.php?vid="+<?php echo $vid; ?>+"&rid="+cnext[0].title;
       }
       
     }
