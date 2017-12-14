@@ -93,7 +93,7 @@
                 $getthumb = mysqli_query($link, "SELECT * FROM tbl_recording WHERE record_topic=".$row[0]);
                 $rowthumb = mysqli_fetch_array($getthumb);
                 //echo $rowthumb[1];
-                echo "<div class='col-lg-3'><a href='details.php?vid=".$row[0]."'><img src='uploads/".$row[0]."/".$rowthumb[1]."' /><br/>".$row[1]."</a></div>";
+                echo "<div class='col-lg-3'><a href='details.php?vid=".$row[0]."'><img src='uploads/".$row[0]."/".$rowthumb[1]."' /><br/>".$row[3]."</a></div>";
             }
 
 
@@ -131,7 +131,7 @@
 
             while ($row = mysqli_fetch_array($result)) {
 
-                echo "<div><a href='details.php?vid=".$row[0]."'>".$row[1]."</a></div>";
+                echo "<div><a style='color:red;' href='details.php?vid=".$row[0]."'>".$row[1]."</a></div>";
             }
              
           ?>
