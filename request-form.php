@@ -12,10 +12,10 @@ if(isset($_POST['submit'])){ //check if form was submitted
 
     if($phrase != NULL && $phrase != ""){
 
-      $getuser = mysqli_query("SELECT * FROM tbl_user WHERE user_username='".$_SESSION['username']."'");
+      $getuser = mysqli_query($link, "SELECT * FROM tbl_user WHERE user_username='".$_SESSION['username']."'");
       $userrow = mysqli_fetch_array($getuser);
 
-      $result = mysqli_query("INSERT INTO tbl_topic(topic_phrase, topic_transliteration, topic_translation, topic_status, topic_author) VALUES('".$phrase."', '".$translit."', '".$translat."', 0, ".$userrow[0].")");
+      $result = mysqli_query($link, "INSERT INTO tbl_topic(topic_phrase, topic_transliteration, topic_translation, topic_status, topic_author) VALUES('".$phrase."', '".$translit."', '".$translat."', 0, ".$userrow[0].")");
 
       header("Location: index.php");
       //$userrow = mysql_fetch_array($result);
