@@ -58,6 +58,14 @@ ini_set('display_errors', '1');
        $result = mysqli_query($link, "SELECT record_id, record_topic, record_file, record_date, record_user FROM tbl_recording WHERE record_type=1 AND record_topic=".$vid);
        $number_of_rows = mysqli_num_rows($result);  
 
+
+       if($number_of_rows >= 4){
+          mysqli_query($link, "UPDATE tbl_topic SET topic_status=1 WHERE topic_id=".$vid);
+       }
+
+
+
+
        if($number_of_rows > 0 && $rid != 'rec'){ //$rid != NULL
 
         if($rid != NULL){
