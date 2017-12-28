@@ -71,7 +71,7 @@ ini_set('display_errors', '1');
   <!--<script src="js/main.js"></script>-->
   <script type="text/javascript">
 
-      setTimeout(function(){ window.location = "https://www.lingocircus.com/video.php?vid="+<?php echo $vid; ?>; }, 3000);
+      setTimeout(function(){ window.location = "https://www.localese.me/video.php?vid="+<?php echo $vid; ?>; }, 3000);
       //54.174.118.236
       
 
